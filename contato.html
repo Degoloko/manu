@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
+  <title>Viajando com a Manu</title>
+</head>
+<body>
+  <div id="corpo">
+    <header id="topo">
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Logo Viajando com a Manu" class="logo" />
+      </div>
+    </header>
+
+    <nav id="Menu">            
+      <div id="botao1"><a href="index.html"><h3>🏠 Home</h3></a></div>
+      <div id="botao2"><a href="europa.html"><h3>✈️ Viagem dos 15 anos</h3></a></div>
+      <div id="botao3"><a href="bahia.html"><h3>🌴 Bahia</h3></a></div>
+      <div id="botao4"><a href="bc.html"><h3>🌊 Balneário Camboriú</h3></a></div>
+      <div id="botao5"><a href="contato.html"><h3>📬 Contato</h3></a></div>
+    </nav>
+    <main id="conteudo">
+      <aside id="esquerda">
+        <div class="image-container"></div>
+      </aside>
+
+      <section id="centro">
+        <h2>Fale Comigo</h2>
+        <p>Quer compartilhar experiências ou tem dúvidas sobre minhas viagens? Entre em contato!</p>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+            <span id="nome-error" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required />
+            <span id="email-error" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" />
+            <span id="telefone-error" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="assunto">Assunto:</label>
+            <select id="assunto" name="assunto">
+              <option value="viagem">Dicas de viagem</option>
+              <option value="duvida">Dúvida</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            <span id="mensagem-error" class="error-message"></span>
+          </div>
+
+          <button type="submit" class="submit-btn">Enviar Mensagem</button>
+        </form>
+      </section>
+
+      <aside id="direita">
+        <div class="image-container"></div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.instagram.com/manuurdc/" target="_blank" rel="noopener noreferrer">
+            <img src="./img/insta.png" alt="Instagram" />
+            <span>Instagram</span>
+          </a>
+          <a href="https://github.com/manuurdc" target="_blank" rel="noopener noreferrer">
+            <img src="./img/github.png" alt="GitHub" />
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/manuella-de-castro-47463b347/" target="_blank" rel="noopener noreferrer">
+            <img src="./img/linkedin.png" alt="LinkedIn" />
+            <span>LinkedIn</span>
+          </a>
+        </div>
+        <div class="footer-copyright">
+          ©️ 2025 Viajando com a Manu - Todos os direitos reservados
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Script de validação -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('contactForm');
+      const nome = form.nome;
+      const email = form.email;
+      const telefone = form.telefone;
+      const mensagem = form.mensagem;
+
+      const errors = {
+        nome: document.getElementById('nome-error'),
+        email: document.getElementById('email-error'),
+        telefone: document.getElementById('telefone-error'),
+        mensagem: document.getElementById('mensagem-error'),
+      };
+
+      const validate = {
+        nome() {
+          const value = nome.value.trim();
+          if (value.length < 3) {
+            errors.nome.textContent = 'O nome deve ter pelo menos 3 caracteres.';
+            nome.classList.add('error');
+            return false;
+          }
+          errors.nome.textContent = '';
+          nome.classList.remove('error');
+          return true;
+        },
+        email() {
+          const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+          if (!regex.test(email.value.trim())) {
+            errors.email.textContent = 'Por favor, insira um e-mail válido.';
+            email.classList.add('error');
+            return false;
+          }
+          errors.email.textContent = '';
+          email.classList.remove('error');
+          return true;
+        },
+        telefone() {
+          const value = telefone.value.trim();
+          if (value !== '') {
+            const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}[\s-]?\d{4}$/;
+            if (!regex.test(value)) {
+              errors.telefone.textContent = 'Telefone inválido.';
+              telefone.classList.add('error');
+              return false;
+            }
+          }
+          errors.telefone.textContent = '';
+          telefone.classList.remove('error');
+          return true;
+        },
+        mensagem() {
+          const value = mensagem.value.trim();
+          if (value.length < 10) {
+            errors.mensagem.textContent = 'A mensagem deve ter pelo menos 10 caracteres.';
+            mensagem.classList.add('error');
+            return false;
+          }
+          errors.mensagem.textContent = '';
+          mensagem.classList.remove('error');
+          return true;
+        }
+      };
+
+      nome.addEventListener('blur', validate.nome);
+      email.addEventListener('blur', validate.email);
+      telefone.addEventListener('blur', validate.telefone);
+      mensagem.addEventListener('blur', validate.mensagem);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const valid =
+          validate.nome() &&
+          validate.email() &&
+          validate.telefone() &&
+          validate.mensagem();
+
+        if (valid) {
+          alert('Mensagem enviada com sucesso!');
+          form.reset();
+          document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        } else {
+          alert('Corrija os campos com erro antes de enviar.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

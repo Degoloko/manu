@@ -1,0 +1,262 @@
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* GERAL */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+  animation: fadeIn 1s ease-in;
+}
+
+#corpo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  animation: fadeIn 1.2s ease;
+}
+
+/* TOPO */
+#topo {
+  background: linear-gradient(135deg, #9370db, #7b5cb6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  animation: slideInUp 1s ease;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-height: 100px;
+  height: auto;
+  width: auto;
+}
+
+/* MENU */
+#Menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #9370db;
+  padding: 10px 0;
+  animation: slideInUp 1.2s ease;
+}
+
+#Menu a {
+  text-decoration: none;
+  color: white;
+  padding: 15px 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+#Menu a:hover {
+  background-color: #7b5cb6;
+  transform: scale(1.05);
+}
+
+/* CONTEÚDO */
+#conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px 0;
+  animation: fadeIn 1.4s ease;
+}
+
+#centro {
+  flex: 1 1 600px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(147, 112, 219, 0.1);
+}
+
+/* LATERAIS */
+#esquerda, #direita {
+  flex: 1 1 300px;
+  background-color: #f9f5ff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(147, 112, 219, 0.1);
+  animation: fadeIn 1.8s ease;
+}
+
+#esquerda img, #direita img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+#esquerda img:hover, #direita img:hover {
+  transform: scale(1.03);
+}
+
+/* TÍTULOS */
+h2, h3 {
+  color: #4b0082;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.4em;
+  margin: 20px 0;
+}
+
+/* FORMULÁRIO */
+.form-container {
+  background-color: rgba(147, 112, 219, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #9370db;
+  margin-top: 20px;
+  animation: fadeInScale 1.6s ease;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group label {
+  color: #4b0082;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9370db;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.submit-btn {
+  background-color: #9370db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #7b5cb6;
+}
+
+/* MENSAGENS DE ERRO */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.success {
+  border: 1px solid green !important;
+}
+
+/* RODAPÉ */
+footer {
+  background: linear-gradient(135deg, #9370db, #7b5cb6);
+  color: white;
+  padding: 30px 10px;
+  text-align: center;
+  animation: fadeIn 2s ease;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #7b5cb6;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #6a4ca3;
+  transform: translateY(-2px);
+}
+
+.footer-copyright {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  #conteudo {
+    flex-direction: column;
+  }
+
+  #esquerda, #direita {
+    display: none;
+  }
+
+  #centro {
+    flex: 1 1 100%;
+  }
+
+  #Menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Menu a {
+    margin: 5px 0;
+  }
+}
